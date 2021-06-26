@@ -23,7 +23,7 @@ app.use('/admin',adminApi)
 //database connectiivity
 const mongoClient = require('mongodb').MongoClient;
 
-const dburl = " mongodb+srv://mongodemo:bikki12@cluster0.z4bqj.mongodb.net/mongotask?retryWrites=true&w=majority";
+const dburl = process.env.DATABASE_URL;
 
 //database obj
 //let databaseObject;
@@ -72,5 +72,5 @@ app.get('/*', (req, res)=> {
 
 
 // assign port 
-const port = 8080;
+const port =process.env.PORT || 8080;
 app.listen(port,()=> console.log(`server listening on port ${port}..`)) 
