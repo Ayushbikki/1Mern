@@ -145,7 +145,7 @@ userApi.post("/login",expressErrorHandler( async(req,res,next) =>{
             res.send({message: "Invalid password"})
         }
         else{
-            let token = await jwt.sign({ username : credentials.username},'abcdef',{expiresIn: 120})
+            let token = await jwt.sign({ username : credentials.username},process.env.LOGIN_SECRET_KEY,{expiresIn: 120})
            delete user.password
             res.send({message: "login-success",
              token: token,
